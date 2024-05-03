@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu {
+    width: 100vw;
+    height: 200px;
+    background-color: rgb(119, 118, 118);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu__img {
+    width: 150px;
+}
+
+b {
+    font-size: 25px;
+    color: white;
+}
+
+b:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+.menu__list__phai a {
+    text-decoration: none;
+    font-size: 25px;
+    padding: 15px;
+    color: aliceblue;
+}
+
+.menu__list__thongbao {
+    margin-right: 20px;
+}
+
+.menu__list__giohang {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.menu__list__phai a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+.menu__list__trai a {
+    text-decoration: none;
+    margin-left: 10px;
+    padding: 15px;
+    color: aliceblue;
+    font-size: 25px;
+    margin: auto;
+}
+
+.menu__list__trai a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+input,
+button {
+    font-size: 15px;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.menu__List__phai__tk {
+    margin-top: 100px;
+    margin-right: 15px;
+}
+
+.ngan__cach__1 {
+    width: 100vw;
+    height: 5px;
+    background-color: gray;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    border-radius: 1000px;
+}
+
+
+/* anh */
+
+.banner {
+    width: 100vw;
+    height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ngan__cach__2 {
+    width: 100vw;
+    height: 5px;
+    margin-bottom: 20px;
+    border-radius: 1000px;
+}
+
+.tieude {
+    margin-left: 40%;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.banhang {
+    box-sizing: border-box;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    margin-left: 250px;
+}
+
+.the {
+    border: 1px solid gray;
+    width: 360px;
+    height: 460px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.the__icon {
+    color: darkgray;
+    font-size: 25px;
+}
+
+.the__anh {
+    width: 120px;
+}
+
+.the__anh img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+.the__ten {
+    font-size: 1rem;
+    margin: auto 50px;
+    margin-top: 20px;
+}
+
+.the__gia {
+    margin-left: 135px;
+    margin-top: 20px;
+}
+
+.the__size {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.the__size span {
+    margin-left: 15px;
+    padding: 2px 5px;
+    background-color: black;
+    color: white;
+}
+
+.the__mua {
+    margin-top: 50px;
+    margin-left: 200px
+}
+
+.the__mua__ngay {
+    outline: none;
+    border: none;
+    background: orange;
+    color: black;
+    padding: 10px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.the:hover .the__anh {
+    transform: translate(-50px) rotate(-20deg);
+}
+
+.the__size,
+.the__mua {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.the:hover .the__mua {
+    visibility: visible;
+    opacity: 100;
+}
+
+.the:hover .the__size {
+    visibility: visible;
+    opacity: 100;
+}

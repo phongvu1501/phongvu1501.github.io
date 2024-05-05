@@ -4,287 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="main.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>shop Thể Thao</title>
 </head>
 
 <body>
-    <!-- menu -->
-    <div class="menu">
-        <div class="menu__list__trai">
-            <img class="menu__img" src="./assets/img/ao.jpg" alt="">
-            <a href="">Trang Chủ</a>
-            <a href="">Danh Mục</a>
-            <a href="">Dịch Vụ</a>
-        </div>
-        <div class="menu__list__phai">
-            <b>Liên hệ : 0329403727</b>
-            <a href="" class="menu__list__giohang"> <i class='bx bxs-cart'></i> Giỏ Hàng</a>
-            <a href="" class="menu__list__thongbao">Thông Báo</a>
-            <div class="menu__List__phai__tk">
-                <input type="text" placeholder="Search" size="30">
-                <button>Search</button>
+
+    <section class="login">
+        <form action="">
+            <h1>Xin chào , Mình là Phong !</h1>
+            <div>
+                <label for="">Hãy nhập tên của bạn :</label>
+                <input type="text" id="username">
+                <br>
+                <div id="thongbao" style="color: red;"></div>
             </div>
 
-        </div>
-    </div>
-    <div class="ngan__cach__1">
+            <button type="button" onclick="login()">Login</button>
+            <div>
 
-    </div>
-    <!-- banner -->
-    <div class="banner">
-        <div class="banner__anh1">
-            <img src="./assets/img/rooocon (1).jpg" alt="">
-        </div>
-        <div class="banner__anh2">
-            <img src="./assets/img/azooo (1).jpg" alt="">
-        </div>
-        <div class="banner__anh3">
-            <img src="./assets/img/rooocon (1).jpg" alt="">
-        </div>
-
-    </div>
-    <div class="ngan__cach__2">
-
-    </div>
-    <div class="body__tieude">
-        <h2 class="tieude">Áo Bán Chạy Nhất!!!!!</h2>
-
-    </div>
-    <!-- ban hang -->
-    <div class="banhang">
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
             </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-        <div class="the">
-            <div class="the__icon">
-                <i class='bx bxs-cart'></i>
-            </div>
-            <div class="the__anh">
-                <img src="./assets/img/ao.jpg" alt="" class="anh">
-            </div>
-            <div class="the__ten">
-                <h1>Áo đấu mân đàn</h1>
-            </div>
-            <div class="the__gia">
-                <h2>100$</h2>
-            </div>
-            <div class="the__size">
-                <h2>Size:</h2>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-            </div>
-            <div class="the__mua">
-                <button class="the__mua__ngay">Mua Ngay</button>
-            </div>
-        </div>
-    </div>
+        </form>
+    </section>
 </body>
+<script>
+    function login() {
+        let username = document.getElementById('username').value;
+        if (username == "") {
+            document.getElementById('thongbao').innerHTML = " * Vui lòng nhập username";
+        } else {
+            alert("Xin chào " + username + "!");
+            window.location = "page.html";
+        }
+    }
+</script>
 
 </html>

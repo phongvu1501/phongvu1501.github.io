@@ -76,7 +76,7 @@ if(isset($_GET['action']) && $_GET['action'] === 'remove_from_cart' && isset($_G
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TiệmCủaPhong</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="php.css">
 </head>
 <body>
 <div class="menu">

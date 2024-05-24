@@ -8,7 +8,7 @@ let listProduct = [{
         quantity: 0,
         image: 'assets/img/ao.jpg',
         nature: {
-            color: ['blue'],
+            color: ['white'],
             size: ['XS', 'S', 'M', 'L', 'XL'],
             type: 'Áo'
         }
@@ -20,7 +20,7 @@ let listProduct = [{
         quantity: 0,
         image: 'assets/img/ao.jpg',
         nature: {
-            color: ['blue'],
+            color: ['white'],
             size: ['XS', 'S', 'M', 'L', 'XL'],
             type: 'Áo'
         }
@@ -32,7 +32,7 @@ let listProduct = [{
         quantity: 0,
         image: 'assets/img/ao.jpg',
         nature: {
-            color: ['blue'],
+            color: ['white'],
             size: ['XS', 'S', 'M', 'L', 'XL'],
             type: 'Áo'
         }
@@ -107,6 +107,42 @@ let listProduct = [{
             color: ['black'],
             size: ['XS', 'S', 'M', 'L', 'XL'],
             type: 'Quần'
+        }
+    },
+    {
+        id: 10,
+        name: 'Mũ',
+        price: 30000,
+        quantity: 0,
+        image: 'assets/img/mu.jpg',
+        nature: {
+            color: ['black'],
+            size: ['XS', 'S', 'M', 'L', 'XL'],
+            type: 'Phụ kiện'
+        }
+    },
+    {
+        id: 11,
+        name: 'Tất',
+        price: 30000,
+        quantity: 0,
+        image: 'assets/img/tat.jpg',
+        nature: {
+            color: ['black'],
+            size: ['XS', 'S', 'M', 'L', 'XL'],
+            type: 'Phụ kiện'
+        }
+    },
+    {
+        id: 12,
+        name: 'Khăn',
+        price: 30000,
+        quantity: 0,
+        image: 'assets/img/khan.jpg',
+        nature: {
+            color: ['black'],
+            size: ['XS', 'S', 'M', 'L', 'XL'],
+            type: 'Phụ kiện'
         }
     },
 ];

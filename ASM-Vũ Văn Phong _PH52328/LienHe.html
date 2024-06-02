@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .lienHe {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .thongtin {
+        margin-left: 60px;
+    }
+
+    .anh {
+        flex: 1;
+        max-width: 300px;
+        margin-left: 60px;
+    }
+
+    .anh img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .lienHe {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .thongtin,
+        .anh {
+            margin-left: 0;
+        }
+    }
+
+    h1 a {
+        text-decoration: none;
+    }
+
+    h1 a:hover {
+        text-decoration: underline;
+    }
+
+    .facebook p a {
+        text-decoration: none;
+    }
+
+    .facebook p a:hover {
+        text-decoration: underline;
+    }
+
+    .zalo p a {
+        text-decoration: none;
+    }
+
+    .zalo p a:hover {
+        text-decoration: underline;
+    }
+
+    .email p a {
+        text-decoration: none;
+    }
+
+    .email p a:hover {
+        text-decoration: underline;
+    }
+
+    .sdt p a {
+        text-decoration: none;
+    }
+
+    .sdt p a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Liên hệ với <a href="index.html">ShopCủaPhong</a></h1>
+        <div class="lienHe">
+            <div class="thongtin">
+                <div class="facebook">
+                    <p> Facebook :<a href="https://www.facebook.com/vuvanphong.P"> Phong Vũ</a></p>
+                </div>
+                <div class="sdt">
+                    <p>Số điện thoại : <a href="tel:0329403727">0329403727</a></p>
+                </div>
+                <div class="zalo">
+                    <p>Zalo :
+                        <a href="https://zalo.me/0329403727">Phong Vũ</a>
+                    </p>
+                </div>
+                <div class="email">
+                    <p>Email : <a href="mailto:phongvvph52328@gmail.com">phongvvph52328@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="anh">
+                <img src="/img/dev.jpg" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

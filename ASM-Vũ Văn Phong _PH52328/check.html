@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>check</h1>
+        <div id="trave"></div>
+    </div>
+    <script>
+        function dangKy() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let sdt = document.getElementById("sdt").value;
+            let luuTru =
+                "<p>Họ và tên người nhận : " + username + "</p>" +
+                "<p>Địa chỉ nhận hàng : " + password + "</p>" +
+                "<p>Số điện thoại : " + sdt + "</p>";
+            document.getElementById("trave").innerHTML = luuTru;
+
+        }
+    </script>
+</body>
+
+</html>

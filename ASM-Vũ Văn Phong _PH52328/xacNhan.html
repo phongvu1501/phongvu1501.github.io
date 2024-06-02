@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    h1 a {
+        text-decoration: none;
+    }
+
+    h1 a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Điền thông tin địa chỉ nhận hàng, <a href="index.html">ShopCủaPhong </a>hân hạnh được phụ vụ quý khách!</h1>
+        <div class="login">
+            <form action="index.html" onsubmit="return validateForm()">
+                <label for="">Họ và tên người nhận :</label>
+                <input type="text" placeholder="Tên đăng nhập" name="username" id="username">
+                <div id="thongbaouser" class="error-message"></div><br><br>
+                <label for="">Địa chỉ nhận hàng :</label>
+                <input type="text" placeholder="Địa chỉ nhận hàng" name="password" id="password">
+                <div id="thongbaopass" class="error-message"></div><br><br>
+                <label for="">Số điện thoại :</label>
+                <input type="number" placeholder="Số điện thoại" min="0" name="sdt" id="sdt">
+                <div id="thongbaosdt" class="error-message"></div><br><br>
+                <input type="submit" value="Đăng ký" class="btn">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function validateForm() {
+        let username = document.getElementsByName("username")[0].value;
+        let password = document.getElementsByName("password")[0].value;
+        let sdt = document.getElementsByName("sdt")[0].value;
+        let isValid = true;
+
+        document.getElementById("thongbaouser").innerHTML = "";
+        document.getElementById("thongbaopass").innerHTML = "";
+        document.getElementById("thongbaosdt").innerHTML = "";
+
+        if (username == "") {
+            document.getElementById("thongbaouser").innerHTML = "* Vui lòng điền đủ thông tin";
+            isValid = false;
+        }
+        if (password == "") {
+            document.getElementById("thongbaopass").innerHTML = "* Vui lòng điền đủ địa chỉ nhận hàng";
+            isValid = false;
+        }
+        if (sdt == "" || sdt.length < 10 || sdt.length > 11) {
+            document.getElementById("thongbaosdt").innerHTML = "* Vui lòng điền đúng số điện thoại";
+            isValid = false;
+        } else if (isValid) {
+            alert("Xin chào " + username + " !, bạn đã đặt hàng thành công tài khoản tại ShopCủaPhong!");
+        }
+        return isValid;
+    }
+</script>
+
+</html>

@@ -79,7 +79,7 @@
                 document.getElementById("thongbaoemail").innerHTML = "* Vui lòng điền đúng email";
                 isValid = false;
             }
-            if (sdt == "" || sdt.length < 10 || sdt.length < 11) {
+            if (sdt == "" || sdt.length < 10 || sdt.length > 11) {
                 document.getElementById("thongbaosdt").innerHTML = "* Vui lòng điền đúng số điện thoại";
                 isValid = false;
             } else if (isValid) {

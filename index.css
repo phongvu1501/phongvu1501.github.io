@@ -74,6 +74,7 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    gap: 20px;
 }
 
 .menu-right button:hover {
@@ -82,13 +83,14 @@
 
 .banner img {
     border-radius: 10px;
-    transition: transform 0.3s;
-    transform-origin: center center;
+    /* transition: transform 0.3s;
+    transform-origin: center center; */
 }
 
-.banner img:hover {
+
+/* .banner img:hover {
     transform: scale(1.1);
-}
+} */
 
 .title h2 {
     text-align: center;
@@ -105,6 +107,7 @@
 }
 
 .pro img {
+    max-width: 100%;
     border-radius: 10px;
     transition: transform 0.3s;
     transform-origin: center center;
@@ -229,4 +232,10 @@ footer a:hover {
 #thongbaoemail,
 #thongbaosdt {
     color: red
+}
+
+#count,
+.countResults {
+    text-align: center;
+    font-size: 25px;
 }

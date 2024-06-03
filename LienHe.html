@@ -11,83 +11,99 @@
     h1 {
         text-align: center;
     }
-
+    
     .lienHe {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
+    
     .thongtin {
         margin-left: 60px;
     }
-
+    
     .anh {
         flex: 1;
         max-width: 300px;
         margin-left: 60px;
     }
-
+    
     .anh img {
         width: 100%;
         height: auto;
         display: block;
     }
-
+    
     @media (max-width: 768px) {
         .lienHe {
             flex-direction: column;
             align-items: center;
         }
-
         .thongtin,
         .anh {
             margin-left: 0;
         }
     }
-
+    
     h1 a {
         text-decoration: none;
     }
-
+    
     h1 a:hover {
         text-decoration: underline;
     }
-
+    
     .facebook p a {
         text-decoration: none;
     }
-
+    
     .facebook p a:hover {
         text-decoration: underline;
     }
-
+    
     .zalo p a {
         text-decoration: none;
     }
-
+    
     .zalo p a:hover {
         text-decoration: underline;
     }
-
+    
     .email p a {
         text-decoration: none;
     }
-
+    
     .email p a:hover {
         text-decoration: underline;
     }
-
+    
     .sdt p a {
         text-decoration: none;
     }
-
+    
     .sdt p a:hover {
         text-decoration: underline;
     }
-
+    
     p {
         font-size: 25px;
+    }
+    
+    .btn {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    
+    .btn:hover {
+        background-color: #0056b3;
     }
 </style>
 
@@ -115,7 +131,13 @@
                 <img src="/img/dev.jpg" alt="" width="100%">
             </div>
         </div>
+        <button type="submit" id="submit" onclick="quayLai()" class="btn">Quay lại</button>
     </div>
 </body>
+<script>
+    function quayLai() {
+        window.location.href = "index.html"
+    }
+</script>
 
 </html>

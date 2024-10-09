@@ -4,88 +4,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopCủaPhong</title>
-    <link rel="stylesheet" href="index.css">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXZ4V8Q6M9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <title>Tâm thư xin lỗi</title>
+    <!-- Thêm Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Thêm Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+    body {
+        background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        padding: 20px;
+    }
 
-  gtag('config', 'G-LXZ4V8Q6M9');
-</script>
+    .message-box {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        max-width: 90vw;
+        /* Chiều rộng tối đa 90% viewport width */
+        width: 100%;
+        /* Đảm bảo chiều rộng 100% trong khung */
+        height: auto;
+        /* Chiều cao tự động */
+        opacity: 0;
+        /* Bắt đầu với độ trong suốt 0 */
+        animation: fadeIn 1s forwards;
+        /* Thêm hiệu ứng fadeIn */
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            /* Bắt đầu từ trong suốt */
+            transform: translateY(20px);
+            /* Di chuyển lên từ dưới */
+        }
+
+        to {
+            opacity: 1;
+            /* Kết thúc với độ trong suốt 1 */
+            transform: translateY(0);
+            /* Về vị trí ban đầu */
+        }
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 20px;
+        opacity: 0;
+        /* Bắt đầu với độ trong suốt 0 */
+        animation: fadeInText 1s forwards 0.5s;
+        /* Thêm hiệu ứng cho tiêu đề */
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        opacity: 0;
+        /* Bắt đầu với độ trong suốt 0 */
+        animation: fadeInText 1s forwards;
+        /* Thêm hiệu ứng cho đoạn văn */
+    }
+
+    p:nth-of-type(1) {
+        animation-delay: 1s;
+    }
+
+    /* Đoạn văn đầu tiên */
+    p:nth-of-type(2) {
+        animation-delay: 1.5s;
+    }
+
+    /* Đoạn văn thứ hai */
+    p:nth-of-type(3) {
+        animation-delay: 2s;
+    }
+
+    /* Đoạn văn thứ ba */
+    p:nth-of-type(4) {
+        animation-delay: 2.5s;
+    }
+
+    /* Đoạn văn thứ tư */
+    p:nth-of-type(5) {
+        animation-delay: 3s;
+    }
+
+    /* Đoạn văn thứ năm */
+    p:nth-of-type(6) {
+        animation-delay: 3.5s;
+    }
+
+    /* Đoạn văn thứ sáu */
+    p:nth-of-type(7) {
+        animation-delay: 4s;
+    }
+
+    /* Đoạn văn thứ bảy */
+
+    @keyframes fadeInText {
+        from {
+            opacity: 0;
+            /* Bắt đầu từ trong suốt */
+            transform: translateY(10px);
+            /* Di chuyển lên từ dưới */
+        }
+
+        to {
+            opacity: 1;
+            /* Kết thúc với độ trong suốt 1 */
+            transform: translateY(0);
+            /* Về vị trí ban đầu */
+        }
+    }
+
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 2rem;
+            /* Điều chỉnh kích thước tiêu đề cho màn hình nhỏ */
+        }
+
+        p {
+            font-size: 1rem;
+            /* Điều chỉnh kích thước văn bản cho màn hình nhỏ */
+        }
+    }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>ShopCủaPhong!</h1>
-        <div class="menu">
-            <div class="menu-left">
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="LienHe.html">Connect</a></li>
-                <li><a href="login.html">Đăng nhập</a></li>
-            </div>
-            <div class="menu-right">
-                <form action="" id="filter">
-                    <input type="text" placeholder="Nhập thông tin cần tìm..." id="search">
-                    <button>Search</button>
-                </form>
-            </div>
+        <div class="message-box">
+            <h1>Gửi em! Người con gái anh yêu nhất!</h1>
+            <p>
+                Anh đã suy nghĩ rất nhiều trước khi viết những dòng này. Anh biết rằng chỉ một lời xin lỗi thôi sẽ không
+                thể xóa nhòa những tổn thương mà anh đã gây ra cho em. Nhưng anh vẫn muốn nói, từ sâu thẳm trái tim
+                mình, rằng anh thực sự xin lỗi.
+            </p>
+            <p>
+                Anh xin lỗi vì đã không trân trọng em, vì đã để em chịu đựng những điều mà lẽ ra anh không nên làm. Anh
+                đã quá chú tâm vào bản thân mà quên mất cảm xúc của em – người đã luôn bên cạnh anh, chia sẻ và yêu
+                thương anh hết lòng.
+            </p>
+            <p>
+                Những ngày qua, anh đã dành thời gian để suy ngẫm về tất cả những gì đã xảy ra. Anh hiểu rằng nếu anh
+                không thay đổi, anh sẽ đánh mất điều quý giá nhất trong cuộc đời mình – đó là em. Anh không thể chấp
+                nhận điều đó. Em là người đặc biệt đối với anh, và anh không muốn mất em.
+            </p>
+            <p>
+                Anh sẽ học cách lắng nghe em hơn, sẽ cố gắng quan tâm đến những điều nhỏ bé mà em yêu thích. Mỗi khoảnh
+                khắc sắp tới, anh đều muốn dành cho việc xây dựng lại niềm tin, tình yêu mà chúng ta đã từng có.
+            </p>
+            <p>
+                Em yêu, anh không hoàn hảo, nhưng anh muốn trở thành phiên bản tốt nhất của chính mình vì em. Anh hy
+                vọng rằng em có thể cho anh một cơ hội nữa, để anh chứng minh rằng anh có thể thay đổi.
+            </p>
+            <p>
+                Anh yêu em, hơn cả những lời nói có thể diễn tả.
+            </p>
+            <p class="text-right"><strong>Mãi yêu em,</strong></p>
+            <p class="text-right"><strong>_Anh yêu em!_</strong></p>
         </div>
-        <div class="banner">
-            <img src="/img/slider 2- (2).png" alt="" width="100%">
-        </div>
-        <div class="title">
-            <h2>Đây là một số sản phẩm đang có mặt hiện tại ở ShopCủaPhong</h2>
-            <div class="countResults">
-                Số lượng sản phẩm <b id="count"></b>
-            </div>
-            <div id="list" class="product">
-
-            </div>
-
-            <!-- <div class="product">
-                <div class="products">
-                    <div class="pro">
-                        <a href="/product1.html"><img src="/img/7.jpg" alt="" width="100%"></a>
-                    </div>
-                    <div class="pros">
-                        <h2>Tên SP : Giày thể thao</h2>
-                        <p>Giá : <s>1.500.000 VND</s></p>
-                        <p>Sale : 1.000.000 VND</p>
-                        <button type="submit" onclick="chiTietSP()">Chi tiết sản phẩm</button>
-                    </div>
-                </div>
-                <div class="products">
-                    <div class="pro">
-                        <img src="/img/8.jpg" alt="" width="100%">
-                    </div>
-                    <div class="pros">
-                        <h2>Tên SP : Giày thể thao</h2>
-                        <p>Giá : <s>1.500.000 VND</s></p>
-                        <p>Sale : 1.000.000 VND</p>
-                        <button type="submit" onclick="chiTietSP()">Chi tiết sản phẩm</button>
-                    </div>
-                </div>
-                <div class="products">
-                    <div class="pro">
-                        <img src="/img/9.jpg" alt="" width="100%">
-                    </div>
-                    <div class="pros">
-                        <h2>Tên SP : Giày thể thao</h2>
-                        <p>Giá : <s>1.500.000 VND</s></p>
-                        <p>Sale : 1.000.000 VND</p>
-                        <button type="submit" onclick="chiTietSP()">Chi tiết sản phẩm</button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        <footer>Thông tin chi tiết liện hệ : <a href="LienHe.html">ShopCủaPhong</a></footer>
     </div>
+
+    <!-- Thêm Bootstrap JS và jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<script src="index.js">
-</script>
 
 </html>

@@ -9,95 +9,110 @@
 
 </head>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        /* Chọn font chữ Poppins, nhẹ nhàng và hiện đại */
-        background-color: #e0f7fa;
-        /* Màu nền xanh nhạt pastel, nhẹ nhàng và dễ chịu */
-        color: #333;
-        /* Chữ màu tối để dễ đọc trên nền sáng */
-        line-height: 1.6;
-        padding: 0;
-        height: 100vh;
-        /* Chiều cao toàn màn hình */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+body {
+    font-family: 'Poppins', sans-serif; /* Chọn font chữ Poppins, nhẹ nhàng và hiện đại */
+    background-color: #e0f7fa; /* Màu nền xanh nhạt pastel, nhẹ nhàng và dễ chịu */
+    color: #333; /* Chữ màu tối để dễ đọc trên nền sáng */
+    line-height: 1.6;
+    padding: 0;
+    height: 100vh; /* Chiều cao toàn màn hình */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    #intro {
-        max-width: 1200px;
-        margin: 50px;
-        padding: 40px;
-        background-color: #ffffff;
-        /* Nền trắng cho phần giới thiệu */
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        color: #333;
-        /* Màu chữ tối dễ đọc trên nền sáng */
-        text-align: center;
-    }
+#intro {
+    max-width: 1200px;
+    margin: 50px;
+    padding: 40px;
+    background-color: #ffffff; /* Nền trắng cho phần giới thiệu */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333; /* Màu chữ tối dễ đọc trên nền sáng */
+    text-align: center;
+    width: 100%;
+    /* Đảm bảo phần giới thiệu chiếm 100% chiều rộng màn hình */
+}
 
+.intro-title {
+    font-size: 3.5em; /* Tăng kích thước chữ cho tên shop */
+    color: #ff6f00; /* Màu cam nhẹ cho tên shop để nổi bật */
+    font-weight: 800; /* Làm cho tên shop đậm hơn */
+    text-transform: uppercase; /* Viết hoa toàn bộ để tạo sự nổi bật */
+    letter-spacing: 2px; /* Tăng khoảng cách giữa các chữ để tạo sự mạnh mẽ */
+    animation: fadeIn 2s ease-out;
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+.intro-text {
+    font-size: 1.2em;
+    color: #555; /* Màu chữ xám đậm, dễ đọc */
+    margin-top: 20px;
+    animation: fadeInUp 2s ease-out;
+    opacity: 0;
+}
+
+/* Điều chỉnh cho các thiết bị có màn hình nhỏ */
+@media (max-width: 768px) {
     .intro-title {
-        font-size: 3.5em;
-        /* Tăng kích thước chữ cho tên shop */
-        color: #ff6f00;
-        /* Màu cam nhẹ cho tên shop để nổi bật */
-        font-weight: 800;
-        /* Làm cho tên shop đậm hơn */
-        text-transform: uppercase;
-        /* Viết hoa toàn bộ để tạo sự nổi bật */
-        letter-spacing: 2px;
-        /* Tăng khoảng cách giữa các chữ để tạo sự mạnh mẽ */
-        animation: fadeIn 2s ease-out;
-        margin-bottom: 20px;
-        /* Khoảng cách dưới tiêu đề */
+        font-size: 2.5em; /* Giảm kích thước tiêu đề cho màn hình nhỏ */
     }
 
     .intro-text {
-        font-size: 1.2em;
-        color: #555;
-        /* Màu chữ xám đậm, dễ đọc */
-        margin-top: 20px;
-        animation: fadeInUp 2s ease-out;
+        font-size: 1em; /* Giảm kích thước chữ cho đoạn văn */
+    }
+
+    #intro {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* Điều chỉnh cho thiết bị di động nhỏ hơn */
+@media (max-width: 480px) {
+    .intro-title {
+        font-size: 2em; /* Kích thước tiêu đề nhỏ hơn cho điện thoại */
+    }
+
+    .intro-text {
+        font-size: 0.9em; /* Kích thước chữ nhỏ hơn */
+    }
+
+    #intro {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
         opacity: 0;
     }
 
-    .intro-text:nth-child(odd) {
-        animation-delay: 0.5s;
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .intro-text:nth-child(even) {
-        animation-delay: 1s;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
 
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 </style>
 
 <body>

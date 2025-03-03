@@ -1,143 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên hệ</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<style>
-    h1 {
-        text-align: center;
-    }
-    
-    .lienHe {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .thongtin {
-        margin-left: 60px;
-    }
-    
-    .anh {
-        flex: 1;
-        max-width: 300px;
-        margin-left: 60px;
-    }
-    
-    .anh img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-    
-    @media (max-width: 768px) {
-        .lienHe {
-            flex-direction: column;
-            align-items: center;
-        }
-        .thongtin,
-        .anh {
-            margin-left: 0;
-        }
-    }
-    
-    h1 a {
-        text-decoration: none;
-    }
-    
-    h1 a:hover {
-        text-decoration: underline;
-    }
-    
-    .facebook p a {
-        text-decoration: none;
-    }
-    
-    .facebook p a:hover {
-        text-decoration: underline;
-    }
-    
-    .zalo p a {
-        text-decoration: none;
-    }
-    
-    .zalo p a:hover {
-        text-decoration: underline;
-    }
-    
-    .email p a {
-        text-decoration: none;
-    }
-    
-    .email p a:hover {
-        text-decoration: underline;
-    }
-    
-    .sdt p a {
-        text-decoration: none;
-    }
-    
-    .sdt p a:hover {
-        text-decoration: underline;
-    }
-    
-    p {
-        font-size: 25px;
-    }
-    
-    .btn {
-        background-color: #007bff;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 8px;
-    }
-    
-    .btn:hover {
-        background-color: #0056b3;
-    }
-</style>
+namespace App\Models;
 
-<body>
-    <div class="container">
-        <h1>Liên hệ với <a href="index.html">ShopCủaPhong</a></h1>
-        <div class="lienHe">
-            <div class="thongtin">
-                <div class="facebook">
-                    <p> Facebook :<a href="https://www.facebook.com/vuvanphong.P"> Phong Vũ</a></p>
-                </div>
-                <div class="sdt">
-                    <p>Số điện thoại : <a href="tel:0329403727">0329403727</a></p>
-                </div>
-                <div class="zalo">
-                    <p>Zalo :
-                        <a href="https://zalo.me/0329403727">Phong Vũ</a>
-                    </p>
-                </div>
-                <div class="email">
-                    <p>Email : <a href="mailto:phongvvph52328@gmail.com">phongvvph52328@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="anh">
-                <img src="/img/dev.jpg" alt="" width="100%">
-            </div>
-        </div>
-        <button type="submit" id="submit" onclick="quayLai()" class="btn">Quay lại</button>
-    </div>
-</body>
-<script>
-    function quayLai() {
-        window.location.href = "index.html"
-    }
-</script>
+use App\Model;
 
-</html>
+class Customer extends Model
+{
+    protected $tableName = 'customers';
+
+    public function all()
+    {
+        $db = $this->connection->createQueryBuilder();
+        $stmt = $db
+            ->select(
+                'c.id',
+                'c.name', 
+                'c.name',
+                'c.avatar',
+                'c.overview',
+                'c.created_at',
+                'c.updated_at',
+                't.name t_name',
+            )
+            ->from($this->tableName,'c')
+            ->join('c','types','t','c.type_id = t.id');
+        return $stmt->fetchAllAssociative();
+    }
+    public function find($id)
+    {
+        $db = $this->connection->createQueryBuilder();
+        $stmt = $db
+            ->select(
+                'c.id',
+                'c.type_id',
+                'c.name',
+                'c.avatar',
+                'c.created_at',
+                'c.updated_at',
+                't.name t_name',
+            )
+            ->from($this->tableName,'c')
+            ->join('c','types','t','c.type_id = t.id')
+            ->where('c.id = :id')
+            ->setParameter('id', $id);
+        return $stmt->fetchAssociative();
+    }
+    public function create($data){
+        $this->connection->insert($this->tableName, $data);
+    }
+    public function update($id, $data){
+        $this->connection->update($this->tableName, $data, ['id' => $id]);
+    }
+    public function delete($id){
+        $this->connection->delete($this->tableName, ['id' => $id]);
+    }
+}

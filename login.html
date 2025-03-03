@@ -1,98 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<style>
-    h1 {
-        text-align: center;
-    }
+@section('title')
+    đây là thêm
+@endsection
 
-    h1 a {
-        text-decoration: none;
-    }
-
-    h1 a:hover {
-        text-decoration: underline;
-    }
-
-    .quayLai {
-        text-align: center;
-    }
-
-    .quayLai .btn {
-        max-width: 100%;
-    }
-</style>
-
-<body>
+@section('content')
     <div class="container">
-        <h1>Hãy đăng ký cho mình tài khoản tại <a href="index.html">ShopCủaPhong</a></h1>
-        <div class="login">
-            <form action="index.html" onsubmit="return validateForm()">
-                <label for="">Họ và tên :</label>
-                <input type="text" placeholder="Tên đăng nhập" name="username">
-                <div id="thongbaouser" class="error-message"></div><br><br>
-                <label for="">Mật khẩu :</label>
-                <input type="password" placeholder="Mật khẩu" name="password">
-                <div id="thongbaopass" class="error-message"></div><br><br>
-                <label for="">Email :</label>
-                <input type="email" placeholder="Email" name="email">
-                <div id="thongbaoemail" class="error-message"></div><br><br>
-                <label for="">Số điện thoại :</label>
-                <input type="number" placeholder="Số điện thoại" min="0" name="sdt">
-                <div id="thongbaosdt" class="error-message"></div><br><br>
-                <input type="submit" value="Đăng ký" class="btn">
-            </form>
-            <div class="quayLai">
-                <button type="submit" onclick="quayLai()" class="btn">Trang chủ</button>
-
+        <form method="POST" action="/customers/{{ $customer['id'] }}/update" enctype="multipart/form-data">
+            <div class="mb-3 row">
+                <label for="name" class="col-4 col-form-label">Name</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{ $customer['name'] }}" />
+                </div>
             </div>
-        </div>
+            
+            <div class="mb-3 row">
+                <label for="avatar" class="col-4 col-form-label">Ảnh</label>
+                <div class="col-8">
+                    <input type="file" class="form-control" name="avatar" id="avatar" placeholder="avatar" />
+                    @if ($customer['avatar'])
+                        <img src="{{ file_url($customer['avatar']) }}" alt="" width="100px">
+                    @endif
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="overview" class="col-4 col-form-label">overview</label>
+                <div class="col-8">
+                   <textarea name="overview" id="overview" cols="20" rows="5">overview</textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="type_id" class="col-4 col-form-label">Trạng thái</label>
+                <div class="col-8">
+                   <select name="type_id" id="type_id" class="form-control">
+                    @foreach ($types as $type)
+                        <option value="{{ $type['id'] }}">{{ $type['name'] }}</option>
+                    @endforeach
+                   </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="offset-sm-4 col-sm-8">
+                    <button type="submit" class="btn btn-primary">
+                        Action
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-    <script>
-        function validateForm() {
-            let username = document.getElementsByName("username")[0].value;
-            let password = document.getElementsByName("password")[0].value;
-            let email = document.getElementsByName("email")[0].value;
-            let sdt = document.getElementsByName("sdt")[0].value;
-            let isValid = true;
-
-            document.getElementById("thongbaouser").innerHTML = "";
-            document.getElementById("thongbaopass").innerHTML = "";
-            document.getElementById("thongbaoemail").innerHTML = "";
-            document.getElementById("thongbaosdt").innerHTML = "";
-
-            if (username == "") {
-                document.getElementById("thongbaouser").innerHTML = "* Vui lòng điền đủ thông tin";
-                isValid = false;
-            }
-            if (password == "" || password.length < 6) {
-                document.getElementById("thongbaopass").innerHTML = "* Vui lòng điền đủ 6 ký tự";
-                isValid = false;
-            }
-            if (email.indexOf("@") == -1) {
-                document.getElementById("thongbaoemail").innerHTML = "* Vui lòng điền đúng email";
-                isValid = false;
-            }
-            if (sdt == "" || sdt.length < 10 || sdt.length > 11) {
-                document.getElementById("thongbaosdt").innerHTML = "* Vui lòng điền đúng số điện thoại";
-                isValid = false;
-            } else if (isValid) {
-                alert("Xin chào " + username + " !, bạn đã đăng ký thành công tài khoản tại ShopCủaPhong!");
-            }
-            return isValid;
-
-        }
-
-        function quayLai() {
-            window.location.href = "index.html";
-        }
-    </script>
-</body>
-
-</html>
+@endsection

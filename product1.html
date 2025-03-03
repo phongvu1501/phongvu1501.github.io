@@ -1,184 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<style>
-    h1 {
-        margin-left: 20px;
-        margin-bottom: 30px;
-        text-align: center;
-    }
+@section('title')
+    đây là danh sách
+@endsection
 
-    h1 a {
-        text-decoration: none;
-    }
-
-    h1 a:hover {
-        text-decoration: underline;
-    }
-
-    .sanPham {
-        display: flex;
-        margin: 10px;
-        padding: 10px;
-        gap: 20px;
-    }
-
-    .thongtinSP {
-        margin-left: 50px;
-    }
-
-    .anhSP img {
-        border-radius: 10px;
-    }
-
-    .thongtinSP p {
-        margin: 10px 0;
-        color: #333;
-    }
-
-    .thongtinSP p s {
-        color: #999;
-    }
-
-    .img {
-        border-radius: 10px;
-        transition: transform 0.3s;
-        transform-origin: center center;
-    }
-
-    img:hover {
-        transform: scale(1.1);
-    }
-
-    .thongtinSP button {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .thongtinSP button:hover {
-        background-color: #0056b3;
-    }
-
-    .ten {
-        font-weight: bold;
-        font-size: 30px;
-    }
-
-    label,
-    .giaGoc,
-    .giaSale {
-        font-size: 20px;
-    }
-
-    .size {
-        width: 100px;
-        padding: 5px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f9f9f9;
-        color: #333;
-    }
-
-    .size:focus {
-        outline: none;
-    }
-
-    #muaNgay {
-        font-size: 20px;
-        color: red;
-    }
-
-    label,
-    select,
-    .giaGoc,
-    .giaSale {
-        margin-top: 30px;
-    }
-
-    .chonDe {
-        margin-top: 30px;
-        display: flex;
-        gap: 20px;
-    }
-</style>
-
-<body>
-    <div class="container">
-        <h1>Product 1 : Dưới đây là thông tin chi tiết sản phẩm đang có mặt tại <a href="index.html">ShopCủaPhong</a>
-        </h1>
-        <div class="sanPham">
-            <div class="anhSP">
-                <img src="/img/7.jpg" alt="" width="100%">
-            </div>
-            <div class="thongtinSP">
-                <p class="ten">Tên sản phẩm : Giày thể thao</p>
-                <label for="">Size :</label>
-                <select name="chonSize" id="chonSize" class="size" onchange=" muaHang()">
-                    <option value="">Size</option>
-                    <option value="38">38</option>
-                    <option value="39">39</option>
-                    <option value="40">40</option>
-                    <option value="41">41</option>
-                    <option value="42">42</option>
-                    <option value="43">43</option>
-                    <option value="44">44</option>
-                    <option value="45">45</option>
-                </select>
-                <div id="muaNgay"></div>
-                <p class="giaGoc">Giá : <s style="color: red;">1.500.000 VND</s></p>
-                <p class="giaSale">Giá : 1.000.000 VND</p>
-                <div class="chonDe">
-                    <button type="submit" id="submit" onclick="quayLai()"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
-                        </svg>
-                    </button>
-                    <button type="submit" id="submit" onclick="datMua()">Mua ngay</button>
-                </div>
-            </div>
-        </div>
+@section('content')
+    <div class="table-responsive">
+        <a href="/customers/create" class="btn btn-primary mb-3">Thêm</a>
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Overview</th>
+                    <th scope="col">Create</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($data as $customer)
+                    <tr scope="row">
+                        <td>{{ $customer['id'] }}</td>
+                        <td>{{ $customer['name'] }}</td>
+                        <td>
+                            @if ($customer['avatar'])
+                                <img src="{{ file_url($customer['avatar']) }}" alt="" width="100px">
+                            @endif
+                        </td>
+                        <td>{{ $customer['overview'] }}</td>
+                        <td>{{ $customer['created_at'] }}</td>
+                        <td>{{ $customer['updated_at'] }}</td>
+                        <td>{{ $customer['t_name'] }}</td>
+                        <td>
+                            <a href="/customers/{{ $customer['id'] }}/show" class="btn btn-primary">Show</a>
+                            <a href="/customers/{{ $customer['id'] }}/edit" class="btn btn-warning">Edit</a>
+                            <a href="/customers/{{ $customer['id'] }}/delete" class="btn btn-danger"
+                                onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+        </table>
     </div>
-</body>
-<script>
-    function muaHang() {
-        let size = document.getElementById("chonSize");
-        let idSize = size.value;
-        document.getElementById("muaNgay").innerHTML = "";
-
-    }
-
-    function datMua() {
-        document.getElementById("muaNgay").innerHTML = "";
-        let isValid = true;
-        if (chonSize == "") {
-            document.getElementById("muaNgay").innerHTML = "* Vui lý chọn size";
-            isValid = false;
-        } else if (isValid) {
-            {
-                window.location.href = "xacNhan.html"
-            }
-        }
-        return isValid;
-    }
-
-    function quayLai() {
-        window.location.href = "index.html"
-    }
-</script>
-
-</html>
+@endsection

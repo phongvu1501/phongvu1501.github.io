@@ -1,177 +1,95 @@
-<!DOCTYPE html>
-<html lang="vi">
+public function update($id) {
+        $customer = $this->customer->find($id);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu ShopCủaPhong</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        if(empty($customer)) {
+            redirect404();
+        }
+        try {
+            $data = $_POST + $_FILES;
 
-</head>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            $validate = new Validator();
 
-body {
-    font-family: 'Poppins', sans-serif; /* Chọn font chữ Poppins, nhẹ nhàng và hiện đại */
-    background-color: #e0f7fa; /* Màu nền xanh nhạt pastel, nhẹ nhàng và dễ chịu */
-    color: #333; /* Chữ màu tối để dễ đọc trên nền sáng */
-    line-height: 1.6;
-    padding: 0;
-    height: 100vh; /* Chiều cao toàn màn hình */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+            $rules = [
+                'name' => 'required|max:255',
+                'type_id' => 'required|numeric',
+                'overview' => 'nullable|max:255',
+                'avatar' => 'nullable|uploaded_file:,2048K,png,jpg,jpeg',
+            ];
 
-#intro {
-    max-width: 1200px;
-    margin: 50px;
-    padding: 40px;
-    background-color: #ffffff; /* Nền trắng cho phần giới thiệu */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    color: #333; /* Màu chữ tối dễ đọc trên nền sáng */
-    text-align: center;
-    width: 100%;
-    /* Đảm bảo phần giới thiệu chiếm 100% chiều rộng màn hình */
-}
+            $errors = $this->validate($validate, $data, $rules);
 
-.intro-title {
-    font-size: 3.5em; /* Tăng kích thước chữ cho tên shop */
-    color: #ff6f00; /* Màu cam nhẹ cho tên shop để nổi bật */
-    font-weight: 800; /* Làm cho tên shop đậm hơn */
-    text-transform: uppercase; /* Viết hoa toàn bộ để tạo sự nổi bật */
-    letter-spacing: 2px; /* Tăng khoảng cách giữa các chữ để tạo sự mạnh mẽ */
-    animation: fadeIn 2s ease-out;
-    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
-}
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                return redirect("/customers/$id/edit");
+            }
+            if (is_upload('avatar')) {
+                $data['avatar'] = $this->uploadFile($data['avatar'],'customers');
+            } else {
+                $data['avatar'] = $customer['avatar'];
+            }
+            $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
 
-.intro-text {
-    font-size: 1.2em;
-    color: #555; /* Màu chữ xám đậm, dễ đọc */
-    margin-top: 20px;
-    animation: fadeInUp 2s ease-out;
-    opacity: 0;
-}
+            $this->customer->create($data);
 
-/* Điều chỉnh cho các thiết bị có màn hình nhỏ */
-@media (max-width: 768px) {
-    .intro-title {
-        font-size: 2.5em; /* Giảm kích thước tiêu đề cho màn hình nhỏ */
+            if (
+                is_upload('avatar')
+                && !empty($customer['avatar'])
+                && file_exists($customer['avatar'])
+            ) {
+                unlink($customer['avatar']);
+            }
+            return redirect("/customers/$id/edit");
+        } catch (\Throwable $th) {
+            debug($th);
+        }
+
     }
+     public function store()
+    {
+        try {
+            $data = $_POST + $_FILES;
 
-    .intro-text {
-        font-size: 1em; /* Giảm kích thước chữ cho đoạn văn */
+            $validate = new Validator();
+
+            $rules = [
+                'name' => 'required|max:255',
+                'type_id' => 'required|numeric',
+                'overview' => 'nullable|max:255',
+                'avatar' => 'nullable|uploaded_file:,2048K,png,jpg,jpeg',
+            ];
+
+            $errors = $this->validate($validate, $data, $rules);
+
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                return redirect('/customers/create');
+            }
+            if (is_upload('avatar')) {
+                $data['avatar'] = $this->uploadFile($_FILES['avatar']);
+            }
+            $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
+
+            $this->customer->create($data);
+            return redirect('/customers');
+        } catch (\Throwable $th) {
+            debug($th);
+        }
     }
+   public function delete($id)
+    {
+        $customer = $this->customer->find($id);
 
-    #intro {
-        margin: 20px;
-        padding: 20px;
+        if (empty($customer)) {
+            redirect404();
+        }
+        try {
+            $this->customer->delete($id);
+            if (!empty($customer('avatar')) && file_exists($customer['avatar'])) {
+                unlink($customer['avatar']);
+            }
+            return redirect('/customers');
+        } catch (\Throwable $th) {
+            debug($th);
+        }
     }
-}
-
-/* Điều chỉnh cho thiết bị di động nhỏ hơn */
-@media (max-width: 480px) {
-    .intro-title {
-        font-size: 2em; /* Kích thước tiêu đề nhỏ hơn cho điện thoại */
-    }
-
-    .intro-text {
-        font-size: 0.9em; /* Kích thước chữ nhỏ hơn */
-    }
-
-    #intro {
-        margin: 10px;
-        padding: 15px;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-</style>
-
-<body>
-    <section id="intro">
-        <div class="intro-container">
-            <h2 class="intro-title">✨ Chào mừng đến với ShopCủaPhong! ✨</h2>
-            <p class="intro-text">Bạn đang tìm kiếm những món trang sức đẹp, sang trọng và đẳng cấp để tôn vinh vẻ đẹp
-                của bản thân? Hãy đến với ShopCủaPhong, nơi cung cấp những bộ sưu tập trang sức cao cấp, được thiết kế
-                tinh tế, độc đáo và phù hợp với mọi phong cách. 💍</p>
-            <p class="intro-text">Tại ShopCủaPhong, chúng tôi hiểu rằng trang sức không chỉ là món đồ trang trí, mà còn
-                là biểu tượng của cá tính và phong cách sống...</p>
-            <p class="intro-text">
-                Tại ShopCủaPhong, chúng tôi hiểu rằng trang sức không chỉ là món đồ trang trí, mà còn là biểu tượng của
-                cá tính và phong cách sống. Mỗi sản phẩm tại cửa hàng đều được chọn lọc kỹ càng, chế tác tỉ mỉ từ chất
-                liệu cao cấp như vàng, bạc, kim cương và ngọc trai, mang lại sự hoàn hảo cho từng chi tiết. Đặc biệt,
-                chúng tôi luôn cập nhật những xu hướng trang sức mới nhất, giúp bạn luôn nổi bật và tự tin trong mọi
-                dịp. ✨
-            </p>
-            <p class="intro-text">
-                Chúng tôi cung cấp đa dạng các loại trang sức, từ những chiếc nhẫn cưới lộng lẫy, dây chuyền kim cương
-                tinh xảo, đến những đôi bông tai ngọc trai thanh lịch, phù hợp với mọi đối tượng và nhu cầu. Dù bạn đang
-                tìm kiếm món quà ý nghĩa cho người thân, hay một món đồ để làm đẹp cho chính mình, ShopCủaPhong chắc
-                chắn sẽ mang đến sự lựa chọn hoàn hảo.
-            </p>
-            <p class="intro-text">
-                Với phương châm "Sự hài lòng của khách hàng là trên hết", chúng tôi cam kết mang đến cho bạn không chỉ
-                những sản phẩm chất lượng, mà còn là dịch vụ tận tâm, chu đáo. Đội ngũ nhân viên của chúng tôi luôn sẵn
-                sàng hỗ trợ bạn trong việc chọn lựa những món trang sức phù hợp nhất.
-            </p>
-            <p class="intro-text">
-                💎 **Khám phá bộ sưu tập trang sức cao cấp của ShopCủaPhong ngay hôm nay và tìm kiếm món quà hoàn hảo
-                cho chính mình hoặc người thân yêu!** 💎
-            </p>
-            <p class="intro-text">
-                Chúng tôi luôn mong muốn bạn sẽ tìm thấy một món đồ không chỉ đẹp mắt mà còn mang lại những kỷ niệm
-                tuyệt vời. Hãy để ShopCủaPhong trở thành một phần trong hành trình làm đẹp của bạn, để mỗi ngày của bạn
-                đều trở nên tỏa sáng và trọn vẹn hơn. 🌟
-            </p>
-            <p class="intro-text">
-                📞 **Liên hệ ngay với chúng tôi** để biết thêm chi tiết về các sản phẩm và chương trình khuyến mãi hấp
-                dẫn! Chúng tôi rất hân hạnh được phục vụ bạn!
-            </p>
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const introTexts = document.querySelectorAll('.intro-text');
-
-            // Trigger animations for the intro texts
-            introTexts.forEach((text, index) => {
-                setTimeout(() => {
-                    text.style.opacity = 1;
-                    text.style.transform = 'translateY(0)';
-                }, index * 500); // Delay each text's animation
-            });
-        });
-
-    </script>
-</body>
-
-</html>
+    
